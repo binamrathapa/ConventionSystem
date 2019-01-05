@@ -16,10 +16,13 @@ namespace ConventionSystem
         public virtual DbSet<AudiencePerSeminar> AudiencePerSeminars { get; set; }
 
         public virtual DbSet<PresentersPerSeminar> PresentersPerSeminars { get; set; }
+        public virtual DbSet<RoomStallLocation> RoomStallLocations { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();            
-
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            this.Configuration.LazyLoadingEnabled = false;
+           this.Configuration.ProxyCreationEnabled = false;
+            
         }
     }
 }

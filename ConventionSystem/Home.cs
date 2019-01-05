@@ -19,14 +19,32 @@ namespace ConventionSystem
 
         private void addSeminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AddSeminar frmAddSeminar = new AddSeminar();
+            AddSeminar frmAddSeminar = new AddSeminar(0);
             frmAddSeminar.Show();
         }
 
         private void addSeminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddAttendee frmAddAttendee = new AddAttendee();
-            frmAddAttendee.Show();
+            RegisterAttendee registerAttendee = new RegisterAttendee();
+            registerAttendee.Show();
+        }
+
+        private void viewSeminarTimetableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewSeminarTimeTable viewSeminarTimeTable = new ViewSeminarTimeTable();
+            viewSeminarTimeTable.Show();
+        }
+
+        private void viewScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AttendeeSchedule attendeeSchedule = new AttendeeSchedule();
+            attendeeSchedule.Show();
+        }
+
+        private void displaySeminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ViewSeminars viewSeminars = new ViewSeminars();
+            viewSeminars.Show();
         }
     }
 }

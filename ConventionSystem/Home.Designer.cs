@@ -35,6 +35,8 @@
             this.seminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addSeminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.displaySeminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewSeminarTimetableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,8 @@
             // 
             this.seminarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addSeminarToolStripMenuItem,
-            this.displaySeminarToolStripMenuItem});
+            this.displaySeminarToolStripMenuItem,
+            this.viewScheduleToolStripMenuItem});
             this.seminarToolStripMenuItem.Name = "seminarToolStripMenuItem";
             this.seminarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.seminarToolStripMenuItem.Text = "Attendee";
@@ -75,7 +78,8 @@
             // 
             this.seminarToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addSeminarToolStripMenuItem1,
-            this.displaySeminarToolStripMenuItem1});
+            this.displaySeminarToolStripMenuItem1,
+            this.viewSeminarTimetableToolStripMenuItem});
             this.seminarToolStripMenuItem1.Name = "seminarToolStripMenuItem1";
             this.seminarToolStripMenuItem1.Size = new System.Drawing.Size(62, 20);
             this.seminarToolStripMenuItem1.Text = "Seminar";
@@ -83,15 +87,30 @@
             // addSeminarToolStripMenuItem1
             // 
             this.addSeminarToolStripMenuItem1.Name = "addSeminarToolStripMenuItem1";
-            this.addSeminarToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.addSeminarToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
             this.addSeminarToolStripMenuItem1.Text = "Add Seminar";
             this.addSeminarToolStripMenuItem1.Click += new System.EventHandler(this.addSeminarToolStripMenuItem1_Click);
             // 
             // displaySeminarToolStripMenuItem1
             // 
             this.displaySeminarToolStripMenuItem1.Name = "displaySeminarToolStripMenuItem1";
-            this.displaySeminarToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
+            this.displaySeminarToolStripMenuItem1.Size = new System.Drawing.Size(201, 22);
             this.displaySeminarToolStripMenuItem1.Text = "Display Seminar";
+            this.displaySeminarToolStripMenuItem1.Click += new System.EventHandler(this.displaySeminarToolStripMenuItem1_Click);
+            // 
+            // viewSeminarTimetableToolStripMenuItem
+            // 
+            this.viewSeminarTimetableToolStripMenuItem.Name = "viewSeminarTimetableToolStripMenuItem";
+            this.viewSeminarTimetableToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.viewSeminarTimetableToolStripMenuItem.Text = "View Seminar Timetable";
+            this.viewSeminarTimetableToolStripMenuItem.Click += new System.EventHandler(this.viewSeminarTimetableToolStripMenuItem_Click);
+            // 
+            // viewScheduleToolStripMenuItem
+            // 
+            this.viewScheduleToolStripMenuItem.Name = "viewScheduleToolStripMenuItem";
+            this.viewScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewScheduleToolStripMenuItem.Text = "View Schedule";
+            this.viewScheduleToolStripMenuItem.Click += new System.EventHandler(this.viewScheduleToolStripMenuItem_Click);
             // 
             // Home
             // 
@@ -101,7 +120,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
-            this.Text = "Form1";
+            this.Text = "Home";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -118,6 +137,8 @@
         private System.Windows.Forms.ToolStripMenuItem seminarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addSeminarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem displaySeminarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem viewSeminarTimetableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewScheduleToolStripMenuItem;
     }
 }
 

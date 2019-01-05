@@ -36,6 +36,8 @@ namespace ConventionSystem
             get;
             set;
         }
+        public int RoomStallLocationId
+        { get; set; }
 
         public virtual List<PresentersPerSeminar> PresentersPerSeminars
         {
@@ -48,5 +50,9 @@ namespace ConventionSystem
             get;
             set;
         }// = new List<AudiencePerSeminar>();
+
+        public virtual RoomStallLocation RoomStallLocation
+        { get; set; }
+        
     }
 }

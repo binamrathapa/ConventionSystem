@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConventionSystem
 {
-    public class Room
+    public class RoomStallLocation
     {
         public int Id
         {
@@ -28,6 +28,11 @@ namespace ConventionSystem
             get;
             set;
         }
+
+        
+        
+        public virtual ICollection<Seminar> Seminars
+        { get; set; }
 
     }
 }
