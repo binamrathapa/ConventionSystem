@@ -65,10 +65,13 @@ namespace ConventionSystem
                     seminar = new Seminar();
                     //audiencePerSeminars = new List<AudiencePerSeminar>();
                     //presentersPerSeminars = new List<PresentersPerSeminar>();
+                    if (CheckSeminarExists(GetSeminarStartDateTime(), GetSeminarEndDateTime()))
+                        throw new Exception("There is already a seminar in this time");
                 }
                 seminar.Title = txtTitle.Text;
                 seminar.SeminarDateTime = GetSeminarStartDateTime();
-                seminar.RoomStallLocation = db.RoomStallLocations.Find(Convert.ToInt32(cbRoom.SelectedValue));
+                seminar.RoomStallLocationId = Convert.ToInt32(cbRoom.SelectedValue);
+                //seminar.RoomStallLocation = db.RoomStallLocations.Find(Convert.ToInt32(cbRoom.SelectedValue));
                 seminar.Duration = Convert.ToInt32(txtDuration.Text);
                                
 
@@ -109,8 +112,7 @@ namespace ConventionSystem
                     throw new Exception("Room Capacity is Full");
                 }
                 seminar.PresentersPerSeminars = presentersPerSeminars;
-                if (CheckSeminarExists(GetSeminarStartDateTime(), GetSeminarEndDateTime()))
-                    throw new Exception("There is already a seminar in this time");
+                
                 if (seminarId > 0)
                 {
                     db.Seminars.Attach(seminar);

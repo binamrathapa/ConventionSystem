@@ -63,7 +63,7 @@ namespace ConventionSystem
 
         private void LoadSeminars()
         {
-            var seminars = db.Seminars.AsNoTracking().ToList();
+            var seminars = (from s in db.Seminars select new { s.RoomStallLocation.Location, s.SeminarDateTime, s.Duration, s.Id,s.Title} ).ToList();
             dataGridView1.DataSource = seminars;
         }
     }
