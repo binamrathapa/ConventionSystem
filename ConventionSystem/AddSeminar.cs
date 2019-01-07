@@ -128,6 +128,7 @@ namespace ConventionSystem
         {
             try
             {
+                dataGridView1.Visible = true;
                 DateTime startDate = GetSeminarStartDateTime();
                 DateTime endDate = GetSeminarEndDateTime();
                 var bookedAttendees = (from a in db.Attendees
@@ -175,6 +176,10 @@ namespace ConventionSystem
 
 
                 }
+                else
+                {
+                    dataGridView1.DataSource = avialableAudience;
+                }
                 isAudienceAdded = true;
                 isPresenterAdded = false;
             }
@@ -189,6 +194,7 @@ namespace ConventionSystem
         {
             try
             {
+                dataGridView1.Visible = true;
                 dataGridView1.Controls.Clear();
                 DateTime startDate = GetSeminarStartDateTime();
                 DateTime endDate = GetSeminarEndDateTime();
@@ -228,6 +234,10 @@ namespace ConventionSystem
                         if (attendee != null)
                             chkSelect.Value = true;
                     }
+                }
+                else
+                {
+                    dataGridView1.DataSource = allPresenters;
                 }
 
                 isPresenterAdded = true;
@@ -306,12 +316,15 @@ namespace ConventionSystem
 
         private void LoadSeminar(int pSeminarId)
         {
-            var seminar = db.Seminars.Find(pSeminarId);
-            txtTitle.Text = seminar.Title;
-            txtTime.Text = seminar.SeminarDateTime.Hour.ToString() + ":" + seminar.SeminarDateTime.Minute.ToString();
-            txtDuration.Text = seminar.Duration.ToString();
-            cbRoom.SelectedValue = seminar.RoomStallLocationId;
-
+            if (pSeminarId > 0)
+            {
+                var seminar = db.Seminars.Find(pSeminarId);
+                txtTitle.Text = seminar.Title;
+                txtTime.Text = seminar.SeminarDateTime.Hour.ToString() + ":" + seminar.SeminarDateTime.Minute.ToString();
+                txtDuration.Text = seminar.Duration.ToString();
+                cbRoom.SelectedValue = seminar.RoomStallLocationId;
+            }
+            dataGridView1.Visible = false;
         }
     }
 
