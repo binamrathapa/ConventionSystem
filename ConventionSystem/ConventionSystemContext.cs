@@ -20,8 +20,7 @@ namespace ConventionSystem
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            this.Configuration.LazyLoadingEnabled = false;
-           this.Configuration.ProxyCreationEnabled = false;
+            
             
         }
     }

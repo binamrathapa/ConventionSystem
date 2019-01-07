@@ -77,7 +77,7 @@ namespace ConventionSystem
                     AudiencePerSeminar audiencePerSeminar = new AudiencePerSeminar();
                     audiencePerSeminar.Attendee = db.Attendees.Find(id);
                     audiencePerSeminar.Seminar = seminar;
-                   var attendee = audiencePerSeminars.Where(aps => aps.AttendeeId == id);
+                   var attendee = audiencePerSeminars.Where(aps => aps.AttendeeId == id).FirstOrDefault();
 
                    if (attendee == null)                    
                         audiencePerSeminars.Add(audiencePerSeminar);
@@ -89,19 +89,19 @@ namespace ConventionSystem
                     PresentersPerSeminar presentersPerSeminar = new PresentersPerSeminar();
                     presentersPerSeminar.Presenter = db.Attendees.Find(id);
                     presentersPerSeminar.Seminar = seminar;
-                    //var presenter = presentersPerSeminars.Where(aps => aps.AttendeeId == id);
-                    //if (presenter == null)
+                    var presenter = presentersPerSeminars.Where(aps => aps.AttendeeId == id).FirstOrDefault();
+                    if (presenter == null)
                         presentersPerSeminars.Add(presentersPerSeminar);
                 }
 
-                if (audiencePerSeminars.Count < 1)
-                {
-                    throw new Exception("Please add Audience");
-                }
-                if (presentersPerSeminars.Count < 1)
-                {
-                    throw new Exception("Please add Presenter");
-                }
+                //if (audiencePerSeminars.Count < 1)
+                //{
+                //    throw new Exception("Please add Audience");
+                //}
+                //if (presentersPerSeminars.Count < 1)
+                //{
+                //    throw new Exception("Please add Presenter");
+                //}
 
                 seminar.AudiencePerSeminars = audiencePerSeminars;
                 if (seminar.AudiencePerSeminars.Count > db.RoomStallLocations.Find(cbRoom.SelectedValue).Capacity)
@@ -109,6 +109,8 @@ namespace ConventionSystem
                     throw new Exception("Room Capacity is Full");
                 }
                 seminar.PresentersPerSeminars = presentersPerSeminars;
+                if (CheckSeminarExists(GetSeminarStartDateTime(), GetSeminarEndDateTime()))
+                    throw new Exception("There is already a seminar in this time");
                 if (seminarId > 0)
                 {
                     db.Seminars.Attach(seminar);
@@ -320,11 +322,21 @@ namespace ConventionSystem
             {
                 var seminar = db.Seminars.Find(pSeminarId);
                 txtTitle.Text = seminar.Title;
+                dtSeminarDate.Value = seminar.SeminarDateTime;
                 txtTime.Text = seminar.SeminarDateTime.Hour.ToString() + ":" + seminar.SeminarDateTime.Minute.ToString();
                 txtDuration.Text = seminar.Duration.ToString();
                 cbRoom.SelectedValue = seminar.RoomStallLocationId;
             }
             dataGridView1.Visible = false;
+        }
+
+        private bool CheckSeminarExists(DateTime startDateTime,DateTime endDateTime)
+        {
+          var seminar=  db.Seminars.Where(s => s.SeminarDateTime >= startDateTime && s.SeminarDateTime <= endDateTime).FirstOrDefault();
+            if (seminar != null)
+                return true;
+            else
+                return false;
         }
     }
 
