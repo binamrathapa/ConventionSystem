@@ -116,10 +116,13 @@ namespace ConventionSystem
                 if (seminarId > 0)
                 {
                     db.Seminars.Attach(seminar);
+                    db.Entry(seminar).State = EntityState.Modified;
+                    
+                    
                 }
                 else
                     db.Seminars.Add(seminar);
-                db.SaveChanges();
+                db.SaveChangesAsync();
                 MessageBox.Show("Seminar successfully added");
             }
             catch (Exception ex)
